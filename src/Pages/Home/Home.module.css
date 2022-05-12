@@ -1,0 +1,29 @@
+.cardContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max-content, 350px));
+    align-items: stretch;
+    margin: 0px auto;
+    height: inherit;
+    place-content: center;
+}
+.taskCountCard{
+    background: #11032d;
+    max-width: 300px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.taskCountCard h3,span{
+    text-align: center;
+    color: #fff;
+    padding-top:10px;
+    text-transform: uppercase;
+}
+.taskCountCard span{
+font-size: 30px;
+margin:auto;
+font-weight: bold;
+}
