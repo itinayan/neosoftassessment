@@ -9,12 +9,14 @@ import TaskManagement from "./Pages/TaskManagement/TaskManagement";
 import TotalTasks from "./Pages/TotalTasks/TotalTasks";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const App = () => {
   return (
+    <DndProvider backend={HTML5Backend}>
     <Provider store={store}>
-    <DragDropContext onDragEnd={()=>{}}>
+
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,8 +28,8 @@ const App = () => {
           <Route path="/login"  element={<Login />} />
         </Routes>
       </Router>
-      </DragDropContext>
     </Provider>
+    </DndProvider>
   );
 };
 

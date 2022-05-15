@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const taskManagementSlice = createSlice({
   name: "taskManagement",
-  initialState: { tasks: [] ,token: null},
+  initialState: { tasks: [], token: null },
   reducers: {
     createTask: (state, action) => {
       state.tasks.push(action.payload);
@@ -29,6 +29,15 @@ export const taskManagementSlice = createSlice({
       });
       state.tasks = updated;
     },
+    changeStage: (state, action) => {
+      const allTasks = state.tasks;
+      const updated = allTasks.map((task) => {
+        if (task.id === action.payload.id) {
+          return { ...task, stage: action.payload.stage };
+        } else return task;
+      });
+      state.tasks = updated;
+    },
     deleteTask: (state, action) => {
       const allTasks = state.tasks;
       const updated = allTasks.filter((task) => {
@@ -47,6 +56,13 @@ export const taskManagementSlice = createSlice({
   },
 });
 
-export const { createTask, stageUp, stageDown ,deleteTask,login} = taskManagementSlice.actions;
+export const {
+  createTask,
+  stageUp,
+  stageDown,
+  changeStage,
+  deleteTask,
+  login,
+} = taskManagementSlice.actions;
 
 export default taskManagementSlice.reducer;
